@@ -6,7 +6,7 @@
 /*   By: radlouni <radlouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 15:54:25 by radlouni          #+#    #+#             */
-/*   Updated: 2025/10/24 18:01:55 by radlouni         ###   ########.fr       */
+/*   Updated: 2025/10/25 19:17:06 by radlouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 #include <cmath>
 #include "Bureaucrat.hpp"
 
+class Bureaucrat;
+
 class Form
 {  
     private:
@@ -30,7 +32,7 @@ class Form
     bool        _check;
 
     public:
-        Form(std::string _name, int _number);
+        Form(std::string _name, int _number, int _number2);
         Form(Form const & src);
         Form& operator=(const Form& src);
         ~Form();
@@ -39,12 +41,12 @@ class Form
     std::string getName(void) const;
     int getGradeSign(void) const;
     int getGradeExec(void) const;
-    std::string     getCheck(void);
+    std::string     getCheck(void) const;
 
     // --- Fonction ---
     void    increment(void);
     void    decrement(void);
-    void    beSigned(Bureaucrat toto);
+    int    beSigned(Bureaucrat& toto);
     
     // --- Classe d'exceptions ---
     class GradeTooLowException : public std::exception
@@ -63,5 +65,7 @@ class Form
         }
     };
 };
+
+std::ostream& operator<<(std::ostream& os, const Form& b);
 
 #endif

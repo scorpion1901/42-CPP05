@@ -6,13 +6,13 @@
 /*   By: radlouni <radlouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 15:54:07 by radlouni          #+#    #+#             */
-/*   Updated: 2025/10/24 18:14:37 by radlouni         ###   ########.fr       */
+/*   Updated: 2025/10/25 19:16:44 by radlouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
-Form::Form(std::string n, int nb) : _name(n), _number(nb)
+Form::Form(std::string n, int nb, int nb2) : _name(n), _number(nb), _number2(nb2)
 {
     std::cout << "constructor called" << std::endl;
     if (n.empty())
@@ -25,7 +25,7 @@ Form::Form(std::string n, int nb) : _name(n), _number(nb)
     return ;
 }
 
-Form::Form(Form const & src):_name(src._name), _number(src._number)
+Form::Form(Form const & src):_name(src._name), _number(src._number), _number2(src._number2)
 {
     return ;
 }
@@ -36,6 +36,7 @@ Form& Form::operator=(const Form& src)
     {
         this->_name = src._name;
         this->_number = src._number;
+        this->_number2 = src._number2;
     }
     return (*this);
 }
@@ -61,7 +62,7 @@ int    Form::getGradeExec(void) const
     return (this->_number2);
 }
 
-std::string     Form::getCheck(void)
+std::string     Form::getCheck(void) const
 {
     if (_check == false)
         return ("the Form is not signed");
@@ -75,10 +76,16 @@ void    Form::decrement   (void)
     _number++;
 }
 
-void    Form::beSigned(Bureaucrat toto)
+int    Form::beSigned(Bureaucrat& toto)
 {
-    if (toto.getGrade() <= getGradeExec())
+    std::cout << "grade: " << toto.getGrade() << "gradesign: " << getGradeSign() << std::endl;   
+    if (toto.getGrade() <= getGradeSign())
+    {
         _check = true;
+        return (1);
+    }
+    else
+        return (0);
 }
 
 void    Form::increment   (void)
@@ -87,4 +94,10 @@ void    Form::increment   (void)
         throw GradeTooLowException();
     _number--;
         
+}
+
+std::ostream& operator<<(std::ostream& os, const Form& b)
+{
+    os << b.getName() << ", signé: " << b.getCheck() << ", grade requis: " << b.getGradeSign() << ", grade exec: " << b.getGradeExec() << std::endl;
+    return os;
 }

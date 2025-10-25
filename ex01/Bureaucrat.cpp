@@ -6,7 +6,7 @@
 /*   By: radlouni <radlouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 19:01:06 by radlouni          #+#    #+#             */
-/*   Updated: 2025/10/24 17:13:51 by radlouni         ###   ########.fr       */
+/*   Updated: 2025/10/25 19:18:41 by radlouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,25 @@ void    Bureaucrat::increment   (void)
         throw GradeTooLowException();
     _number--;
         
+}
+
+void    Bureaucrat::signForm    (Form& form)
+{
+    int a = 0;
+    // try
+    // {
+    //     form.beSigned(*this);
+    //     std::cout << getName() << " a signe " << form.getName() << std::endl;
+    // }
+    // catch(const std::exception& e)
+    // {
+    //     std::cerr << getName() << " n'a pas pu signer " << form.getName() << " car " << e.what() << std::endl;
+    // }
+    a = form.beSigned(*this);
+    if (a == 0)
+        std::cout << getName() << " n'a pas signe " << form.getName() << std::endl;
+    else
+        std::cout << getName() << " a signe " << form.getName() << std::endl;
 }
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& b)

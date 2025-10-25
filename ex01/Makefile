@@ -6,7 +6,7 @@
 #    By: radlouni <radlouni@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/24 14:33:11 by radlouni          #+#    #+#              #
-#    Updated: 2025/10/24 14:33:55 by radlouni         ###   ########.fr        #
+#    Updated: 2025/10/25 17:13:09 by radlouni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,9 @@ NAME = Bureaucrat
 CC = c++
 CPPFLAGS = -Wextra -Werror -Wall -std=c++98
 
-SRCS = main.cpp \
-	Bureaucrat.cpp
+SRCS = Form.cpp \
+	Bureaucrat.cpp \
+	main.cpp
 
 
 OBJS = ${SRCS:.cpp=.o}
