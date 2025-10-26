@@ -6,7 +6,7 @@
 /*   By: radlouni <radlouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 19:01:16 by radlouni          #+#    #+#             */
-/*   Updated: 2025/10/26 10:25:10 by radlouni         ###   ########.fr       */
+/*   Updated: 2025/10/26 18:14:47 by radlouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 #include <cmath>
 #include "Form.hpp"
 
-class Form;
+class AForm;
 
 class Bureaucrat
 {  
@@ -42,7 +42,8 @@ class Bureaucrat
     // --- Fonction ---
     void    increment(void);
     void    decrement(void);
-    void    signForm(Form& form);
+    void    signForm(AForm& form);
+    void    executeForm(AForm const& form);
     
     // --- Classe d'exceptions ---
     class GradeTooLowException : public std::exception

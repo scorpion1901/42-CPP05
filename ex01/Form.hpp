@@ -6,7 +6,7 @@
 /*   By: radlouni <radlouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 15:54:25 by radlouni          #+#    #+#             */
-/*   Updated: 2025/10/25 19:17:06 by radlouni         ###   ########.fr       */
+/*   Updated: 2025/10/26 11:29:27 by radlouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,26 +27,24 @@ class Form
 {  
     private:
     std::string _name;
-    int         _number;
-    int         _number2;
+    int         _GradeToSign;
+    int         _GradeToExec;
     bool        _check;
 
     public:
-        Form(std::string _name, int _number, int _number2);
+        Form(std::string _name, int _GradeToSign, int _GradeToExec);
         Form(Form const & src);
         Form& operator=(const Form& src);
         ~Form();
 
     // --- Geteur ---
     std::string getName(void) const;
-    int getGradeSign(void) const;
-    int getGradeExec(void) const;
-    std::string     getCheck(void) const;
+    int         getGradeToSign(void) const;
+    int         getGradeToExec(void) const;
+    std::string getCheck(void) const;
 
     // --- Fonction ---
-    void    increment(void);
-    void    decrement(void);
-    int    beSigned(Bureaucrat& toto);
+    void    beSigned(Bureaucrat& toto);
     
     // --- Classe d'exceptions ---
     class GradeTooLowException : public std::exception
@@ -62,6 +60,14 @@ class Form
         public:
         const char* what() const throw() {
             return ("the grade is too High");
+        }
+    };
+
+    class FormNotSigned : public std::exception
+    {
+        public:
+        const char* what() const throw() {
+            return (" n'a pas pu signer ");
         }
     };
 };

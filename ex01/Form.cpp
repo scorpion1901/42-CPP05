@@ -6,26 +6,31 @@
 /*   By: radlouni <radlouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 15:54:07 by radlouni          #+#    #+#             */
-/*   Updated: 2025/10/25 19:16:44 by radlouni         ###   ########.fr       */
+/*   Updated: 2025/10/26 11:35:10 by radlouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
-Form::Form(std::string n, int nb, int nb2) : _name(n), _number(nb), _number2(nb2)
+// Form::Form() : _name("default", _number(50), _number2(25)
+// {
+//     std::cout << "constructor of Form called" << std::endl;
+// }
+
+Form::Form(std::string n, int nb, int nb2) : _name(n), _GradeToSign(nb), _GradeToExec(nb2)
 {
-    std::cout << "constructor called" << std::endl;
+    std::cout << "constructor of Form called" << std::endl;
     if (n.empty())
         _name = "default";
-    if (getGradeSign() < 1)
+    if (getGradeToSign() < 1)
         throw GradeTooHighException();
-    else if (getGradeSign() > 150)
+    else if (getGradeToSign() > 150)
         throw GradeTooLowException();
     _check = false;
     return ;
 }
 
-Form::Form(Form const & src):_name(src._name), _number(src._number), _number2(src._number2)
+Form::Form(Form const & src):_name(src._name), _GradeToSign(src._GradeToSign), _GradeToExec(src._GradeToExec)
 {
     return ;
 }
@@ -35,8 +40,8 @@ Form& Form::operator=(const Form& src)
     if (this != &src)
     {
         this->_name = src._name;
-        this->_number = src._number;
-        this->_number2 = src._number2;
+        this->_GradeToSign = src._GradeToSign;
+        this->_GradeToExec = src._GradeToExec;
     }
     return (*this);
 }
@@ -52,14 +57,14 @@ std::string    Form::getName(void) const
     return (this->_name);
 }
 
-int    Form::getGradeSign(void) const
+int    Form::getGradeToSign(void) const
 {
-    return (this->_number);
+    return (this->_GradeToSign);
 }
 
-int    Form::getGradeExec(void) const
+int    Form::getGradeToExec(void) const
 {
-    return (this->_number2);
+    return (this->_GradeToExec);
 }
 
 std::string     Form::getCheck(void) const
@@ -69,35 +74,23 @@ std::string     Form::getCheck(void) const
     return ("the Form is signed");
 }
 
-void    Form::decrement   (void)
+void    Form::beSigned(Bureaucrat& toto)
 {
-    if (_number + 1 > 150)
-        throw   GradeTooHighException();
-    _number++;
-}
-
-int    Form::beSigned(Bureaucrat& toto)
-{
-    std::cout << "grade: " << toto.getGrade() << "gradesign: " << getGradeSign() << std::endl;   
-    if (toto.getGrade() <= getGradeSign())
+    std::cout << "grade: " << toto.getGrade() << "gradesign: " << getGradeToSign() << std::endl;   
+    if (toto.getGrade() <= getGradeToSign())
     {
         _check = true;
-        return (1);
+        return ;
     }
     else
-        return (0);
-}
-
-void    Form::increment   (void)
-{
-    if (_number - 1 < 1)
-        throw GradeTooLowException();
-    _number--;
-        
+    {
+        throw FormNotSigned();
+        return ;
+    }
 }
 
 std::ostream& operator<<(std::ostream& os, const Form& b)
 {
-    os << b.getName() << ", signé: " << b.getCheck() << ", grade requis: " << b.getGradeSign() << ", grade exec: " << b.getGradeExec() << std::endl;
+    os << b.getName() << ", signé: " << b.getCheck() << ", grade requis: " << b.getGradeToSign() << ", grade exec: " << b.getGradeToExec() << std::endl;
     return os;
 }
