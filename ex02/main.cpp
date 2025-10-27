@@ -6,7 +6,7 @@
 /*   By: radlouni <radlouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 19:00:56 by radlouni          #+#    #+#             */
-/*   Updated: 2025/10/27 19:07:20 by radlouni         ###   ########.fr       */
+/*   Updated: 2025/10/27 20:56:21 by radlouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int main() {
         std::srand(std::time(NULL));
         std::cout << "===== Création des bureaucrates =====" << std::endl;
         Bureaucrat bob("Bob", 1);
-        Bureaucrat jim("Jim", 140);
-        Bureaucrat joe("Joe", 50);
+        Bureaucrat jim("Jim", 150);
+        Bureaucrat joe("Joe", 150);
 
         std::cout << bob << std::endl;
         std::cout << jim << std::endl;
