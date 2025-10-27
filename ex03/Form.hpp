@@ -6,7 +6,7 @@
 /*   By: radlouni <radlouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 15:54:25 by radlouni          #+#    #+#             */
-/*   Updated: 2025/10/26 20:26:39 by radlouni         ###   ########.fr       */
+/*   Updated: 2025/10/27 10:37:15 by radlouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ class AForm
         AForm(std::string _name, int _GradeToSign, int _GradeToExec);
         AForm(AForm const & src);
         AForm& operator=(const AForm& src);
-        ~AForm();
+        virtual ~AForm();
 
     // --- Geteur ---
     std::string getName(void) const;

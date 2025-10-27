@@ -6,7 +6,7 @@
 #    By: radlouni <radlouni@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/24 14:33:11 by radlouni          #+#    #+#              #
-#    Updated: 2025/10/26 18:12:38 by radlouni         ###   ########.fr        #
+#    Updated: 2025/10/27 10:35:09 by radlouni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRCS = Form.cpp \
 	PresidentialPardonForm.cpp \
 	RobotomyRequestForm.cpp \
 	ShrubberyCreationForm.cpp \
+	Intern.cpp \
 	main.cpp
 
 
