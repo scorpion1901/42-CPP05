@@ -6,7 +6,7 @@
 /*   By: radlouni <radlouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 19:01:16 by radlouni          #+#    #+#             */
-/*   Updated: 2025/10/26 10:25:10 by radlouni         ###   ########.fr       */
+/*   Updated: 2025/10/27 12:39:05 by radlouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ class Bureaucrat
     int         _grade;
 
     public:
+        Bureaucrat();
         Bureaucrat(std::string _name, int _grade);
         Bureaucrat(Bureaucrat const & src);
         Bureaucrat& operator=(const Bureaucrat& src);

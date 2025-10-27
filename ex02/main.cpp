@@ -6,12 +6,12 @@
 /*   By: radlouni <radlouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 19:00:56 by radlouni          #+#    #+#             */
-/*   Updated: 2025/10/26 21:29:21 by radlouni         ###   ########.fr       */
+/*   Updated: 2025/10/27 19:07:20 by radlouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
@@ -29,15 +29,16 @@ int main() {
         std::cout << joe << std::endl;
 
         std::cout << "\n===== Test ShrubberyCreationForm =====" << std::endl;
-        ShruberyCreationForm shrub("ShruberyCreationForm ");
+        ShrubberyCreationForm shrub("ricardo");
         std::cout << shrub << std::endl;
 
-        jim.signForm(shrub);
+        joe.signForm(shrub);      // il signe
+        jim.signForm(shrub);      // devrait pas signer le formulaire
         jim.executeForm(shrub);   // devrait échouer (grade trop bas)
         bob.executeForm(shrub);   // devrait créer le fichier home_shrubbery
 
         std::cout << "\n===== Test RobotomyRequestForm =====" << std::endl;
-        RobotomyRequestForm robot("RobotomyRequestForm");
+        RobotomyRequestForm robot("hitachi");
         std::cout << robot << std::endl;
 
         joe.signForm(robot);
@@ -45,7 +46,7 @@ int main() {
         bob.executeForm(robot);   // doit réussir
 
         std::cout << "\n===== Test PresidentialPardonForm =====" << std::endl;
-        PresidentialPardonForm pardon("PresidentialPardonForm");
+        PresidentialPardonForm pardon("Bush");
         std::cout << pardon << std::endl;
 
         joe.signForm(pardon);     // devrait échouer (grade trop bas)

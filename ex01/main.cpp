@@ -6,7 +6,7 @@
 /*   By: radlouni <radlouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 19:00:56 by radlouni          #+#    #+#             */
-/*   Updated: 2025/10/25 16:32:28 by radlouni         ###   ########.fr       */
+/*   Updated: 2025/10/27 15:15:26 by radlouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ int main()
         std::cout << "\n=== Tentatives de signature ===" << std::endl;
         bob.signForm(f1);      // Trop bas
         alice.signForm(f1);    // OK
-        charles.signForm(f2);  // OK
         alice.signForm(f2);    // Trop bas
+        charles.signForm(f2);  // OK
 
         std::cout << "\n=== État final des formulaires ===" << std::endl;
         std::cout << f1 << std::endl;

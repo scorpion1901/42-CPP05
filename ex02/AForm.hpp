@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: radlouni <radlouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 15:54:25 by radlouni          #+#    #+#             */
-/*   Updated: 2025/10/26 20:26:39 by radlouni         ###   ########.fr       */
+/*   Updated: 2025/10/27 16:01:23 by radlouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __FORM__
-#define __FORM__
+#ifndef __AFORM__
+#define __AFORM__
 
 #include <iostream>
 #include <cctype>
@@ -32,6 +32,7 @@ class AForm
     bool        _checkToSign;
 
     public:
+        AForm();
         AForm(std::string _name, int _GradeToSign, int _GradeToExec);
         AForm(AForm const & src);
         AForm& operator=(const AForm& src);
@@ -42,6 +43,7 @@ class AForm
     int         getGradeToSign(void) const;
     int         getGradeToExec(void) const;
     std::string getCheckToSign(void) const;
+    bool        getCheck(void) const;
 
     // --- Seteur ---
     void        setCheckToSign(bool check);
@@ -79,7 +81,7 @@ class AForm
     {
         public:
         const char* what() const throw() {
-            return (" n'a pas executer ");
+            return (" n'a pas executer car le grade est trop bas ");
         }
     };
 

@@ -6,7 +6,7 @@
 /*   By: radlouni <radlouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 13:01:18 by radlouni          #+#    #+#             */
-/*   Updated: 2025/10/26 21:06:01 by radlouni         ###   ########.fr       */
+/*   Updated: 2025/10/27 19:11:56 by radlouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,19 @@
 #include <cstdlib>
 #include <ctime>
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 class Bureaucrat;
 
 class RobotomyRequestForm : public AForm
 {  
+    private:
+    RobotomyRequestForm();
+    std::string _target;
+
     public:
-        RobotomyRequestForm(std::string _name);
+        
+        RobotomyRequestForm(std::string target);
         RobotomyRequestForm(RobotomyRequestForm const & src);
         RobotomyRequestForm& operator=(const RobotomyRequestForm& src);
         ~RobotomyRequestForm();

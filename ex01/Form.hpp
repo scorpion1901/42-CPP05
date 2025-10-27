@@ -6,7 +6,7 @@
 /*   By: radlouni <radlouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 15:54:25 by radlouni          #+#    #+#             */
-/*   Updated: 2025/10/26 11:29:27 by radlouni         ###   ########.fr       */
+/*   Updated: 2025/10/27 12:41:49 by radlouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ class Form
     bool        _check;
 
     public:
+        Form();
         Form(std::string _name, int _GradeToSign, int _GradeToExec);
         Form(Form const & src);
         Form& operator=(const Form& src);

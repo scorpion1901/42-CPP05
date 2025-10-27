@@ -6,7 +6,7 @@
 /*   By: radlouni <radlouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 19:01:16 by radlouni          #+#    #+#             */
-/*   Updated: 2025/10/26 18:14:47 by radlouni         ###   ########.fr       */
+/*   Updated: 2025/10/27 16:14:36 by radlouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include <cstdlib>
 #include <fstream>
 #include <cmath>
-#include "Form.hpp"
+#include "AForm.hpp"
 
 class AForm;
 
@@ -30,6 +30,7 @@ class Bureaucrat
     int         _grade;
 
     public:
+        Bureaucrat();
         Bureaucrat(std::string _name, int _grade);
         Bureaucrat(Bureaucrat const & src);
         Bureaucrat& operator=(const Bureaucrat& src);
@@ -59,6 +60,14 @@ class Bureaucrat
         public:
         const char* what() const throw() {
             return ("the grade is too High");
+        }
+    };
+
+    class FormNotExec2 : public std::exception
+    {
+        public:
+        const char* what() const throw() {
+            return (" n'a pas executer car le formulaire n'est pas signer");
         }
     };
 };

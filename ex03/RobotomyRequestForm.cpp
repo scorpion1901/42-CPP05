@@ -6,18 +6,19 @@
 /*   By: radlouni <radlouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 13:00:53 by radlouni          #+#    #+#             */
-/*   Updated: 2025/10/26 21:10:53 by radlouni         ###   ########.fr       */
+/*   Updated: 2025/10/27 19:13:10 by radlouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 
-// PresidentialPardonForm::PresidentialPardonForm() : _name("default", _number(50), _number2(25)
-// {
-//     std::cout << "constructor of Form called" << std::endl;
-// }
+RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", 72, 45)
+{
+    std::cout << "constructor default of RobotomyRequestForm called" << std::endl;
+    return ;
+}
 
-RobotomyRequestForm::RobotomyRequestForm(std::string n) : AForm(n, 72, 45)
+RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("RobotomyRequestForm", 72, 45), _target(target)
 {
     std::cout << "constructor of RobotomyRequestForm called" << std::endl;
     if (this->getGradeToSign() < 1)
@@ -43,7 +44,7 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& s
 
 RobotomyRequestForm::~RobotomyRequestForm(void)
 {
-    std::cout << "Destructor of PresidentialPardonForm (" << this->getName() << ") called" << std::endl;
+    std::cout << "Destructor of RobotomyRequestForm (" << _target << ") called" << std::endl;
     return ;
 }
 
@@ -54,7 +55,7 @@ void    RobotomyRequestForm::execute(Bureaucrat const& executor) const
     for (int i = 0; i < 5; i++)
             std::cout << "drilling noises" << std::endl;
     if (std::rand() % 2 == 0)
-        std::cout << this->getName() << " has been robotomized" << std::endl;
+        std::cout << _target << " has been robotomized" << std::endl;
     else
-        std::cout << "the robotomy of " << this->getName() << " failed." << std::endl;
+        std::cout << "the robotomy of " << _target << " failed." << std::endl;
 }

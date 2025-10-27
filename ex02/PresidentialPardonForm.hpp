@@ -6,7 +6,7 @@
 /*   By: radlouni <radlouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 13:02:04 by radlouni          #+#    #+#             */
-/*   Updated: 2025/10/26 20:45:42 by radlouni         ###   ########.fr       */
+/*   Updated: 2025/10/27 18:24:14 by radlouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,18 @@
 #include <fstream>
 #include <cmath>
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 class Bureaucrat;
 
 class PresidentialPardonForm : public AForm
 {  
+    private:
+    PresidentialPardonForm();
+    std::string _target;
+    
     public:
-        PresidentialPardonForm(std::string _name);
+        PresidentialPardonForm(std::string target);
         PresidentialPardonForm(PresidentialPardonForm const & src);
         PresidentialPardonForm& operator=(const PresidentialPardonForm& src);
         ~PresidentialPardonForm();

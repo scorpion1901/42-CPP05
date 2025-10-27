@@ -6,21 +6,21 @@
 /*   By: radlouni <radlouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 19:01:06 by radlouni          #+#    #+#             */
-/*   Updated: 2025/10/26 10:26:21 by radlouni         ###   ########.fr       */
+/*   Updated: 2025/10/27 15:06:39 by radlouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-// Bureaucrat::Bureaucrat() : _name("default"), _number(15)
-// {
-//     std::cout << "constructor called" << std::endl;
-//     return ;
-// }
+Bureaucrat::Bureaucrat() : _name("default"), _grade(75)
+{
+    std::cout << "constructor of Bureaucrat called" << std::endl;
+    return ;
+}
 
 Bureaucrat::Bureaucrat(std::string n, int nb) : _name(n), _grade(nb)
 {
-    std::cout << "constructor called" << std::endl;
+    std::cout << "constructor of Bureaucrat (" << getName() << ") called" << std::endl;
     if (n.empty())
         _name = "default";
     if (getGrade() < 1)
@@ -47,7 +47,7 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& src)
 
 Bureaucrat::~Bureaucrat(void)
 {
-    std::cout << "Destructor of " << this->getName() << " called" << std::endl;
+    std::cout << "Destructor of Bureaucrat (" << this->getName() << ") called" << std::endl;
     return ;
 }
 
@@ -85,7 +85,7 @@ void    Bureaucrat::signForm    (Form& form)
     }
     catch(const std::exception& e)
     {
-        std::cerr << getName() << e.what() << form.getName() << " car " << e.what() << std::endl;
+        std::cerr << getName() << e.what() << form.getName() << " car grade trop bas" << std::endl;
     }
 }
 

@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: radlouni <radlouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 15:54:07 by radlouni          #+#    #+#             */
-/*   Updated: 2025/10/26 20:17:25 by radlouni         ###   ########.fr       */
+/*   Updated: 2025/10/27 16:15:26 by radlouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "AForm.hpp"
 
-// AForm::AForm() : _name("default", _number(50), _number2(25)
-// {
-//     std::cout << "constructor of Form called" << std::endl;
-// }
+AForm::AForm() : _name("default"), _GradeToSign(50), _GradeToExec(25)
+{
+    std::cout << "constructor default of AForm called" << std::endl;
+    return ;
+}
 
 AForm::AForm(std::string n, int nb, int nb2) : _name(n), _GradeToSign(nb), _GradeToExec(nb2)
 {
-    std::cout << "constructor of Form called" << std::endl;
+    std::cout << "constructor of AForm called" << std::endl;
     if (n.empty())
         _name = "default";
     if (getGradeToSign() < 1)
@@ -48,7 +49,7 @@ AForm& AForm::operator=(const AForm& src)
 
 AForm::~AForm(void)
 {
-    std::cout << "Destructor of " << this->getName() << " called" << std::endl;
+    std::cout << "Destructor of AForm (" << this->getName() << ") called" << std::endl;
     return ;
 }
 
@@ -74,14 +75,18 @@ std::string     AForm::getCheckToSign(void) const
     return ("the Form is signed");
 }
 
+bool    AForm::getCheck(void) const
+{
+    return (_checkToSign);
+}
+
 void    AForm::setCheckToSign(bool check)
 {
     this->_checkToSign = check;
 }
 
 void    AForm::beSigned(Bureaucrat& toto)
-{
-//    std::cout << "grade: " << toto.getGrade() << "gradesign: " << getGradeToSign() << std::endl;   
+{  
     if (toto.getGrade() <= getGradeToSign())
     {
         _checkToSign = true;

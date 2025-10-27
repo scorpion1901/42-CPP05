@@ -6,7 +6,7 @@
 /*   By: radlouni <radlouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 13:00:21 by radlouni          #+#    #+#             */
-/*   Updated: 2025/10/26 18:21:58 by radlouni         ###   ########.fr       */
+/*   Updated: 2025/10/27 19:14:09 by radlouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,18 @@
 #include <fstream>
 #include <cmath>
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 class Bureaucrat;
 
 class ShruberyCreationForm : public AForm
 {  
+    private:
+    ShruberyCreationForm();
+    std::string _target;
+
     public:
-        ShruberyCreationForm(std::string _name);
+        ShruberyCreationForm(std::string target);
         ShruberyCreationForm(ShruberyCreationForm const & src);
         ShruberyCreationForm& operator=(const ShruberyCreationForm& src);
         ~ShruberyCreationForm();

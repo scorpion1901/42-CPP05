@@ -6,18 +6,19 @@
 /*   By: radlouni <radlouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 12:59:41 by radlouni          #+#    #+#             */
-/*   Updated: 2025/10/26 21:20:33 by radlouni         ###   ########.fr       */
+/*   Updated: 2025/10/27 19:15:28 by radlouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 
-// PresidentialPardonForm::PresidentialPardonForm() : _name("default", _number(145), _number2(137)
-// {
-//     std::cout << "constructor of Form called" << std::endl;
-// }
+ShruberyCreationForm::ShruberyCreationForm() : AForm("ShruberyCreationForm", 145, 137)
+{
+    std::cout << "constructor default of ShruberyCreationForm called" << std::endl;
+    return ;
+}
 
-ShruberyCreationForm::ShruberyCreationForm(std::string n) : AForm(n, 145, 137)
+ShruberyCreationForm::ShruberyCreationForm(std::string target) : AForm("ShruberyCreationForm", 145, 137), _target(target)
 {
     std::cout << "constructor of ShruberyCreationForm called" << std::endl;
     if (this->getGradeToSign() < 1)
@@ -43,7 +44,7 @@ ShruberyCreationForm& ShruberyCreationForm::operator=(const ShruberyCreationForm
 
 ShruberyCreationForm::~ShruberyCreationForm(void)
 {
-    std::cout << "Destructor of PresidentialPardonForm (" << this->getName() << ") called" << std::endl;
+    std::cout << "Destructor of ShruberyCreationForm (" << _target << ") called" << std::endl;
     return ;
 }
 
@@ -51,7 +52,7 @@ void    ShruberyCreationForm::execute(Bureaucrat const& executor) const
 {  
     if (executor.getGrade() <= this->getGradeToExec())
     {
-        std::string filename = this->getName() + "_shrubbery";
+        std::string filename = _target + "_shrubbery";
         std::ofstream ofs(filename.c_str(), std::ios::out);
         if (!ofs.is_open())
             throw std::runtime_error("Failed to create file: " + filename);
